@@ -12,12 +12,18 @@
 
 #ifndef FILLIT_H
 # define FILLIT_H
+
 # include <fcntl.h>		/* open */
 # include <unistd.h>	/* read, close*/
 # include <stdlib.h>	/*exit*/
 # include "libft/libft.h"
 # include "check.c"
 //# include "backtracking.c"
+
+# define struct     tetri
+{
+   char **tab; 
+}                   tetrimino;
 
 int		four_connections(char *str);
 int		is_valid(char *str);
