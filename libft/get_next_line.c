@@ -6,11 +6,11 @@
 /*   By: bmenant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:43:22 by bmenant           #+#    #+#             */
-/*   Updated: 2019/01/09 12:16:38 by bmenant          ###   ########.fr       */
+/*   Updated: 2019/01/14 13:32:04 by bprunevi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static char	*reading(char **str, char *buff, int fd)
 {
