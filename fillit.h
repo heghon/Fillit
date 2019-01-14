@@ -20,10 +20,10 @@
 # include "check.c"
 //# include "backtracking.c"
 
-# define struct     tetri
+typedef struct     tetri
 {
    char **tab; 
-}                   tetrimino;
+}                  tetrimino;
 
 int		four_connections(char *str);
 int		is_valid(char *str);
