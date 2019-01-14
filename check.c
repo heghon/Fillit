@@ -6,7 +6,7 @@
 /*   By: bprunevi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 13:29:02 by bprunevi          #+#    #+#             */
-/*   Updated: 2019/01/14 13:29:04 by bprunevi         ###   ########.fr       */
+/*   Updated: 2019/01/14 13:55:54 by bprunevi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,3 @@ int		is_valid(char *str)
 				b++;
 	return (str[a] == '\n' && b == 4 && a == 20 && four_connections(str));
 }
-
