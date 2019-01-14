@@ -19,11 +19,18 @@
 # include "libft/libft.h"
 # include "check.c"
 
-typedef struct     s_tetri
+typedef struct       s_tetri
 {
    int   height;
    int   width;
    char  *str;
-}                  t_tetri;
+}                    t_tetri;
+
+typedef struct       s_list
+{
+   void           *content;
+   size_t         content_size;
+   struct s_list  *next;
+}                    t_list;
 
 #endif
