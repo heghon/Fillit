@@ -6,13 +6,13 @@
 /*   By: bprunevi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 12:27:44 by bprunevi          #+#    #+#             */
-/*   Updated: 2019/01/14 13:34:12 by bprunevi         ###   ########.fr       */
+/*   Updated: 2019/01/14 14:07:21 by bprunevi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		main()
+int		main(int fd, char **argv)
 /* Teste si tous les tetrominos de 'test_valid' sont valides.
  * Renvoie '-1' dans le cas contraire.
  */

@@ -6,7 +6,7 @@
 #    By: bmenant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/06 18:53:28 by bmenant           #+#    #+#              #
-#    Updated: 2019/01/07 14:45:02 by bmenant          ###   ########.fr        #
+#    Updated: 2019/01/14 14:06:19 by bprunevi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,7 @@ CC = gcc -Wall -Wextra -Werror
 all : $(NAME)
 
 $(NAME) :
-	@ $(CC) -c fillit.c
-	@ $(CC) -o fillit.o libft/libft.a fillit
+	@ $(CC) fillit.c -o fillit.o libft/libft.a
 
 clean :
 	@ /bin/rm -f fillit.o
