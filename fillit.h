@@ -6,7 +6,7 @@
 /*   By: bprunevi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 11:55:59 by bprunevi          #+#    #+#             */
-/*   Updated: 2019/01/14 14:05:05 by bprunevi         ###   ########.fr       */
+/*   Updated: 2019/01/14 14:34:18 by bprunevi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,10 @@
 # include <stdlib.h>	/*exit*/
 # include "libft/libft.h"
 # include "check.c"
-//# include "backtracking.c"
 
 typedef struct     tetri
 {
    char **tab; 
 }                  tetrimino;
-
-int		four_connections(char *str);
-int		is_valid(char *str);
 
 #endif
