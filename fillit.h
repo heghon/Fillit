@@ -19,9 +19,11 @@
 # include "libft/libft.h"
 # include "check.c"
 
-typedef struct     tetri
+typedef struct     s_tetri
 {
-   char **tab; 
-}                  tetrimino;
+   int   height;
+   int   width;
+   char  *str;
+}                  t_tetri;
 
 #endif
