@@ -6,7 +6,7 @@
 /*   By: bmenant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 13:28:30 by bmenant           #+#    #+#             */
-/*   Updated: 2019/01/14 18:41:02 by bmenant          ###   ########.fr       */
+/*   Updated: 2019/01/15 15:23:19 by bprunevi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@ int		placement(t_tetri tetri, int side, char *final_str, static int start)
 
 	if (start == size * size + 1)
 		return (-1);
-	if ((((start % 4) + tetri->width) / 4) > 0 || final_str != 46)
+	if ((((start % 4) + tetri->l) / 4) > 0 || final_str != 46)
 		return (0);
-	if ((((start / 4) + tetri->height) / 4) > 0 || final_str != 46)
+	if ((((start / 4) + tetri->h) / 4) > 0 || final_str != 46)
 		return (0);
 	j = 0;
 	while (j != 4)
 	{
 		final_str[start] = tetri->str[j];
 		else
-		if (j == ((start % 4) + tetri->width))
-			j += side - tetri->width;
+		if (j == ((start % 4) + tetri->l))
+			j += side - tetri->l;
 		else
 			j++;
 		start++;
 	}
-	start = tetri->width;
+	start = tetri->l;
 	return (1);
 }
 
