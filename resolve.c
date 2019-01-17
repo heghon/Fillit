@@ -6,71 +6,72 @@
 /*   By: bmenant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 13:28:30 by bmenant           #+#    #+#             */
-/*   Updated: 2019/01/17 12:45:25 by bmenant          ###   ########.fr       */
+/*   Updated: 2019/01/17 15:15:10 by bmenant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#ifndef RESOLVE_C
+# define RESOLVE_C
+# include "fillit.h"
 
-/* side = cote du carre final */
-
-void	fill_the_str(char **str, int side)
+int		placement(t_tetri tetri, int side, char *final_str, int s)
 {
-	if (!(str = (static char *)malloc(sizeof(char) * (side * side + 1))))
-		return (NULL);
-	str = ft_memset(final_str, '.', (side * side));
-	str[size * size] = '\0';
-}
+	t_tetri	backup;
+	int		a;
 
-int		placement(t_tetri tetri, int side, char *final_str, static int start)
-{
-	int			j;
-
-	if (start == side * side)
+	backup = tetri;
+	a = s;
+	if (s == side * side)
 		return (-1);
-	if ((((start % 4) + tetri->l) / 4) > 0 || final_str[start] != 46)
+	if ((((s % 4) + tetri->l) / 4) > 0 || (((s / 4) + tetri->h) / 4) > 0)
 		return (0);
-	if ((((start / 4) + tetri->h) / 4) > 0 || final_str[start] != 46)
-		return (0);
-	j = 0;
-	while (j != 4)
+	while (tetri->str)
 	{
-		final_str[start] = tetri->str[j];
-		if (start == ((start % 4) + tetri->l))
-			start += side - tetri->l;
+		if (final_str[a] != '.' && tetri->*str != '.')
+			return (0);
+		if (a == ((a % 4) + tetri->l))
+			a += (side - tetri->l);
 		else
-			start++;
-		j++;
+			a++;
+		tetri->str++;
 	}
-	start = tetri->l;
+	tetri = backup;
+	while (tetri->str)
+	{
+		final_str[s] = tetri->*str;
+		if (s == ((s % 4) + tetri->l))
+			s += (side - tetri->l);
+		else
+			s++;
+		tetr->str++;
+	}
 	return (1);
 }
 
 char	*resolve(t_tetri tetri, int side)
 {
 	char		*final_str;
-	int			i;
+	int			s;
 	int			ret;
-	static int	start = 0;
 	t_tetri		*backup;
 
-	fill_the_str(final_str, side);
-	i = 0;
+	final_str = ft_strnew((size_t)(side * side));
+	final_str = ft_memset(final_str, '.', (side * side));
 	backup = tetri;
-	while (tetri->next)
+	s = 0;
+	while (tetri->str)
 	{
-		ret = placement(tetri, side, final_str, start);
+		ret = placement(tetri, side, final_str, s);
 		if (ret == 0)
-			start += 1;
+			s++;
 		else if (ret == -1)
 		{
-			start = 0;
 			free(final_str);
-			tetri = backup;
-
+			return (resolve(backup, ++side));
 		}
 		else
 			tetri = tetri->next;
 	}
 	return (final_str);
 }
+#endif
