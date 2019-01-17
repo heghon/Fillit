@@ -20,19 +20,11 @@
 
 typedef struct       s_tetri
 {
-   int   h;
-   int   l;
-   char  *str;
+   int            h;
+   int            l;
+   char           *str;
+   struct s_tetri *next;
 }                    t_tetri;
-
-/* Pourquoi redefinir ce qui est deja dans libft.h ?
-typedef struct       s_list
-{
-   void           *content;
-   size_t         content_size;
-   struct s_list  *next;
-}                    t_list;
-*/
 
 # include "check.c"
 #endif
