@@ -6,7 +6,7 @@
 /*   By: bprunevi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 11:55:59 by bprunevi          #+#    #+#             */
-/*   Updated: 2019/01/15 15:24:22 by bprunevi         ###   ########.fr       */
+/*   Updated: 2019/01/17 11:48:39 by bprunevi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,21 @@
 # include <stdlib.h>	/*exit*/
 # include "libft/libft.h"
 
+// Debug
+#include <stdio.h>
+# define BYTE_TO_BINARY_PATTERN "%c%c%c%c%c%c\t%c%c\n"
+# define BYTE_TO_BINARY(byte)  \
+  (byte & 0x80 ? '1' : '0'), \
+  (byte & 0x40 ? '1' : '0'), \
+  (byte & 0x20 ? '1' : '0'), \
+  (byte & 0x10 ? '1' : '0'), \
+  (byte & 0x08 ? '1' : '0'), \
+  (byte & 0x04 ? '1' : '0'), \
+  (byte & 0x02 ? '1' : '0'), \
+  (byte & 0x01 ? '1' : '0') 
+#define show(x) printf(BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(x));
+
+
 typedef struct       s_tetri
 {
    int   h;
@@ -25,14 +40,12 @@ typedef struct       s_tetri
    char  *str;
 }                    t_tetri;
 
-/* Pourquoi redefinir ce qui est deja dans libft.h ?
-typedef struct       s_list
+typedef struct       s_tetro
 {
-   void           *content;
-   size_t         content_size;
-   struct s_list  *next;
-}                    t_list;
-*/
+   int   h;
+   int   l;
+   char  **str;
+}                    t_tetro;
 
 # include "check.c"
 #endif
