@@ -6,7 +6,7 @@
 /*   By: bprunevi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 13:29:02 by bprunevi          #+#    #+#             */
-/*   Updated: 2019/01/18 14:32:57 by bprunevi         ###   ########.fr       */
+/*   Updated: 2019/01/18 15:54:20 by bprunevi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,17 @@ int		four_connections(char *str)
 	connect = 0;
 	while ((chr = ft_strchr(chr, '#')))
 	{
-		surrounding_chars[0] = (chr == str) ? 'e' : *(chr - 1);		/*gauche*/
-		surrounding_chars[1] = (chr < (str + 5)) ? 'e' : *(chr - 5);/*haut*/
-		surrounding_chars[2] = *(chr + 1);							/*droite*/
-		surrounding_chars[3] = (chr >= (str + 15)) ? 'e' : *(chr + 5);/*bas*/
-		if (ft_strchr(surrounding_chars, '#'))
-			 connect++;
+		if ((chr != str) && (*(chr - 1) == '#'))
+			connect++;
+		if ((chr >= (str + 5)) && (*(chr - 5) == '#'))
+			connect++;
+		if (*(chr + 1) == '#')
+			connect++;
+		if ((chr < (str + 15)) && (*(chr + 5) == '#'))
+			connect++;
 		chr++;
 	}
-	// ERREUR ! CECI PASSE :
-	/*	..#..
-	 *	..#.
-	 *	...#
-	 *	...#
-	 */
-	return (connect == 4);
+	return (connect > 5);
 }
 
 int		is_valid(char *str)
