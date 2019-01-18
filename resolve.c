@@ -6,7 +6,7 @@
 /*   By: bmenant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 13:28:30 by bmenant           #+#    #+#             */
-/*   Updated: 2019/01/17 17:43:45 by bmenant          ###   ########.fr       */
+/*   Updated: 2019/01/18 11:59:44 by bmenant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*resolve(t_tetri *tetri, int side, int start)
 	int			ret;
 	t_tetri		*backup;
 
-	if (start = side * side)
+	if (start == side * side)
 		return (resolve(tetri, ++side, 0));
 	final_str = ft_strnew((size_t)(side * side));
 	final_str = ft_memset(final_str, '.', (side * side));
@@ -62,7 +62,7 @@ char	*resolve(t_tetri *tetri, int side, int start)
 //	start = 0;
 	while (tetri->str)
 	{
-		if (ret = verification(tetri, side, final_str, start) == 0)
+		if ((ret = verification(tetri, side, final_str, start)) == 0)
 			start++;
 		else if (ret == -1)
 		{
