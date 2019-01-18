@@ -6,7 +6,7 @@
 /*   By: bprunevi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 11:55:59 by bprunevi          #+#    #+#             */
-/*   Updated: 2019/01/18 12:14:16 by bmenant          ###   ########.fr       */
+/*   Updated: 2019/01/18 12:36:34 by bmenant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ typedef struct       s_tetri
    struct s_tetri	*next;
 }					t_tetri;
 
-int		is_valid(char *str);
-char	*resolve(t_tetri *tetri, int side, int start);
+# include "check.c"
+# include "resolve.c"
 #endif

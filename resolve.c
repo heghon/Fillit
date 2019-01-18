@@ -6,11 +6,13 @@
 /*   By: bmenant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 13:28:30 by bmenant           #+#    #+#             */
-/*   Updated: 2019/01/18 11:59:44 by bmenant          ###   ########.fr       */
+/*   Updated: 2019/01/18 14:18:02 by bmenant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#ifndef RESOLVE_C
+# define RESOLVE_C
+# include "fillit.h"
 
 int		verification(t_tetri *tetri, int side, char *final_str, int s)
 {
@@ -77,3 +79,5 @@ char	*resolve(t_tetri *tetri, int side, int start)
 	}
 	return (final_str);
 }
+
+#endif
