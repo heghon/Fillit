@@ -6,7 +6,7 @@
 /*   By: bprunevi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 13:29:02 by bprunevi          #+#    #+#             */
-/*   Updated: 2019/01/18 12:35:43 by bmenant          ###   ########.fr       */
+/*   Updated: 2019/01/18 14:32:57 by bprunevi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ int		four_connections(char *str)
 			 connect++;
 		chr++;
 	}
+	// ERREUR ! CECI PASSE :
+	/*	..#..
+	 *	..#.
+	 *	...#
+	 *	...#
+	 */
 	return (connect == 4);
 }
 

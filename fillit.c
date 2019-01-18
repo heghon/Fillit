@@ -6,7 +6,7 @@
 /*   By: bprunevi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 12:27:44 by bprunevi          #+#    #+#             */
-/*   Updated: 2019/01/18 14:13:58 by bmenant          ###   ########.fr       */
+/*   Updated: 2019/01/18 14:30:22 by bprunevi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,18 @@
 void	put_square(char *square, size_t side)
 {
 	size_t i;
+	size_t a;
 
 	i = -1;
-	while (++i <= side)
+	a = 0;
+	while (++i < side)
 	{
-		write(1, square + (i * side), side);
+		while (a < side)
+			ft_putchar(square[(i * side) + a++]);
+		a = 0;
 		ft_putchar('\n');
-		}
+	}
+	ft_putchar('\n');
 }
 
 int		main(int ac, char *argv[1])
