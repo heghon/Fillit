@@ -23,6 +23,7 @@ typedef struct       s_tetri
    int				h;
    int				l;
    char				*str;
+   char           *square;  
    struct s_tetri	*next;
 }					t_tetri;
 
