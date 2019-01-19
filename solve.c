@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bprunevi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/14 11:55:59 by bprunevi          #+#    #+#             */
-/*   Updated: 2019/01/18 12:36:34 by bmenant          ###   ########.fr       */
+/*   Created: 2019/01/18 15:56:39 by bprunevi          #+#    #+#             */
+/*   Updated: 2019/01/18 15:56:41 by bprunevi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#ifndef SOLVE_C
+# define SOLVE_C
+# include "fillit.h"
 
-# include <fcntl.h>		/* open */
-# include <unistd.h>	/* read, close*/
-# include <stdlib.h>	/*exit*/
-# include "libft/libft.h"
-
-typedef struct       s_tetri
+char *tetri_fit(char *square, int side, int pos, t_tetri tt)
 {
-   int				h;
-   int				l;
-   char				*str;
-   char           *square;  
-   struct s_tetri	*next;
-}					t_tetri;
+	int	i;
+	int	j;
 
-# include "check.c"
-# include "resolve.c"
+	i = -1;
+	while (++i < tt.h && (j = -1))
+		while (++j < tt.l)
+			if (tt.str[i * tt.l + j] != '.')
+			{
+				if (square[pos + (i * side) + j] != '.')
+					return(NULL);
+				else
+					square[pos + (i * side) + j] = 'A';
+			}
+	return (square);
+}
+
 #endif
