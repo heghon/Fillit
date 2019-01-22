@@ -6,7 +6,7 @@
 /*   By: bprunevi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 12:27:44 by bprunevi          #+#    #+#             */
-/*   Updated: 2019/01/18 14:30:22 by bprunevi         ###   ########.fr       */
+/*   Updated: 2019/01/22 14:33:02 by bprunevi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ int		main(int ac, char *argv[1])
  */
 {
 	char	tetromino[21];
-	t_tetri tetri[26];
+	char	*square = ft_strdup(sqr);
+	t_tetri *tetri;
+	t_tetri *tetri_bckp;
+	t_tetri *first;
 	int		i;
 	int		fd;
 
@@ -51,12 +54,36 @@ int		main(int ac, char *argv[1])
 	}
 	fd = open(argv[1], O_RDONLY);
 	i = -1;
-	while (read(fd,tetromino,21) > 0 && (i++ || 1))
+	while (read(fd,tetromino,21) > 0)
 	{
 		if (!is_valid(tetromino))
 			exit(-1);
-		tetri[i] = format_tetri(tetromino, 65 + i);
+		if (i == -1)
+		{
+			tetri_bckp = (t_tetri *)malloc(sizeof(t_tetri));
+			*tetri_bckp = format_tetri(tetromino, 65 + ++i);
+			first = tetri_bckp;
+		}
+		else
+		{
+			tetri = (t_tetri *)malloc(sizeof(t_tetri));
+			*tetri = format_tetri(tetromino, 65 + ++i);
+			tetri_bckp->next = tetri;
+			tetri_bckp = tetri;
+		}
 	}
+	i = 5;
+	//ft_strdel(&square);
+	//square = ft_strnew(i * i);
+	//ft_memset(square, 46, i * i);
+	while(!(square = backtracking(square, ++i, 0, *first)))
+	{
+		ft_strdel(&square);
+		ft_strdup(sqr);
+	}
+	put_square(square, i);
+	ft_putstr("\n\n");
+	ft_putnbr(i);
 	close(fd);
 	return (0);
 }

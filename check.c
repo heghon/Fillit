@@ -6,7 +6,7 @@
 /*   By: bprunevi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 13:29:02 by bprunevi          #+#    #+#             */
-/*   Updated: 2019/01/18 15:54:20 by bprunevi         ###   ########.fr       */
+/*   Updated: 2019/01/19 15:39:23 by bprunevi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ t_tetri	format_tetri(char *str, char id)
 		while (++j <= 3)
 			if (rtn[4][i] == '#' && rtn[5][j] == '#')
 				tt.str[x++] = rtn[i][j] == '#' ? id : '.';
+	tt.next = NULL; //PABO
+	tt.square = NULL; //PABO
 	return (tt);
 }
 #endif
