@@ -6,7 +6,7 @@
 /*   By: bprunevi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 12:27:44 by bprunevi          #+#    #+#             */
-/*   Updated: 2019/01/22 14:33:02 by bprunevi         ###   ########.fr       */
+/*   Updated: 2019/01/22 15:38:20 by bprunevi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		main(int ac, char *argv[1])
  */
 {
 	char	tetromino[21];
-	char	*square = ft_strdup(sqr);
+	char	*square;
 	t_tetri *tetri;
 	t_tetri *tetri_bckp;
 	t_tetri *first;
@@ -72,18 +72,15 @@ int		main(int ac, char *argv[1])
 			tetri_bckp = tetri;
 		}
 	}
-	i = 5;
-	//ft_strdel(&square);
-	//square = ft_strnew(i * i);
-	//ft_memset(square, 46, i * i);
-	while(!(square = backtracking(square, ++i, 0, *first)))
+	i = 2;
+	square = ft_strdup("....");
+	while (!(square = backtracking(square, i++, 0, *first)))
 	{
 		ft_strdel(&square);
-		ft_strdup(sqr);
+		square = ft_strnew(i * i);
+		ft_memset(square, 46, i * i);
 	}
-	put_square(square, i);
-	ft_putstr("\n\n");
-	ft_putnbr(i);
+	put_square(square, --i);
 	close(fd);
 	return (0);
 }

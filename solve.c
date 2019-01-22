@@ -6,7 +6,7 @@
 /*   By: bprunevi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 15:56:39 by bprunevi          #+#    #+#             */
-/*   Updated: 2019/01/22 14:33:53 by bprunevi         ###   ########.fr       */
+/*   Updated: 2019/01/22 15:38:16 by bprunevi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,18 @@ char *tetri_fit(char *square, int side, int pos, t_tetri tt)
 
 char *backtracking(char *square, int side, int pos, t_tetri tt)
 {
-	tt.square = ft_strdup(square);
+	char *str;
 
+	//ft_strdel(&tt.square);
+	tt.square = ft_strdup(square);
 	if (pos == side * side - 3)
 		return (NULL);
 	if (tetri_fit(square,side,pos,tt))
 	{
 		if (!tt.next)
 			return (square);
-		if (backtracking(square, side, 0, *tt.next))
-			return(backtracking(square, side, 0, *tt.next));
+		if ((str = backtracking(square, side, 0, *tt.next)))
+			return(str);
 	}
 	return(backtracking(tt.square, side, pos + 1, tt));
 }
