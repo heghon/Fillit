@@ -6,13 +6,13 @@
 #    By: bmenant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/06 18:53:28 by bmenant           #+#    #+#              #
-#    Updated: 2019/01/18 12:37:04 by bmenant          ###   ########.fr        #
+#    Updated: 2019/01/23 15:59:19 by bprunevi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 CC = gcc -Wall -Wextra -Werror
-SRC = fillit.c 
+SRC = fillit.c check.c solve.c
 SRCO = $(SRC:.c=.o)
 
 all : $(NAME)

@@ -6,27 +6,29 @@
 /*   By: bprunevi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 11:55:59 by bprunevi          #+#    #+#             */
-/*   Updated: 2019/01/22 15:38:40 by bprunevi         ###   ########.fr       */
+/*   Updated: 2019/01/23 15:59:14 by bprunevi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include <fcntl.h>		/* open */
-# include <unistd.h>	/* read, close*/
-# include <stdlib.h>	/*exit*/
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
 # include "libft/libft.h"
 
-typedef struct       s_tetri
+typedef struct		s_tetri
 {
-   int				h;
-   int				l;
-   char				*str;
-   struct s_tetri	*next;
-   char				*square;
+	int				h;
+	int				l;
+	char			*str;
+	struct s_tetri	*next;
+	char			*square;
 }					t_tetri;
 
-# include "check.c"
-# include "solve.c"
+int		is_valid(char *str);
+t_tetri	format_tetri(char *str, char id);
+char	*backtracking(char *square, int side, int pos, t_tetri tt);
+
 #endif

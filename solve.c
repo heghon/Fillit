@@ -6,7 +6,7 @@
 /*   By: bprunevi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 15:56:39 by bprunevi          #+#    #+#             */
-/*   Updated: 2019/01/23 11:52:32 by bprunevi         ###   ########.fr       */
+/*   Updated: 2019/01/23 16:07:46 by bprunevi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,43 @@
 # define SOLVE_C
 # include "fillit.h"
 
-char *tetri_fit(char *square, int side, int pos, t_tetri tt)
+char	*tetri_fit(char *square, int side, int pos, t_tetri tt)
 {
 	int	i;
 	int	j;
 
 	i = -1;
 	if (side - (pos % side) < tt.l)
-		return(NULL);
+		return (NULL);
 	if (side - (pos / side) < tt.h)
-		return(NULL);
+		return (NULL);
 	while (++i < tt.h && (j = -1))
 		while (++j < tt.l)
 			if (tt.str[i * tt.l + j] != '.')
 			{
 				if (square[pos + (i * side) + j] != '.')
-					return(NULL);
+					return (NULL);
 				else
 					square[pos + (i * side) + j] = tt.str[i * tt.l + j];
 			}
 	return (square);
 }
 
-char *backtracking(char *square, int side, int pos, t_tetri tt)
+char	*backtracking(char *square, int side, int pos, t_tetri tt)
 {
 	char *str;
 
 	ft_strcpy(tt.square, square);
 	if (pos == side * side - 3)
 		return (NULL);
-	if (tetri_fit(square,side,pos,tt))
+	if (tetri_fit(square, side, pos, tt))
 	{
 		if (!tt.next)
 			return (square);
 		if ((str = backtracking(square, side, 0, *tt.next)))
-			return(str);
+			return (str);
 	}
 	ft_strcpy(square, tt.square);
-	return(backtracking(square, side, pos + 1, tt));
+	return (backtracking(square, side, pos + 1, tt));
 }
 #endif

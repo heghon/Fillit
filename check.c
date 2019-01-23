@@ -6,13 +6,14 @@
 /*   By: bprunevi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 13:29:02 by bprunevi          #+#    #+#             */
-/*   Updated: 2019/01/23 12:08:48 by bprunevi         ###   ########.fr       */
+/*   Updated: 2019/01/23 16:18:10 by bprunevi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECK
 # define CHECK
 # include "fillit.h"
+# define RESET(x) (x = -1)
 
 int		four_connections(char *str)
 {
@@ -45,43 +46,40 @@ int		is_valid(char *str)
 
 	a = 0;
 	b = 0;
-	while (a == 0 || (a < 20 && str[a++] == '\n'))
-		while (a % 5 < 4 && (str[a] == '#' || str[a] == '.'))
-			if (str[a++] == '#')
-				b++;
-	return (str[a] == '\n' && b == 4 && a == 20 && four_connections(str));
+	if (str[a] == '.' || str[a] == '#')
+		while (a == 0 || (a < 20 && str[a++] == '\n'))
+			while (a % 5 < 4 && (str[a] == '#' || str[a] == '.'))
+				if (str[a++] == '#')
+					b++;
+	return (!str[a] && b == 4 && a == 20 && four_connections(str));
 }
 
-t_tetri	format_tetri(char *str, char id) //
+t_tetri	format_tetri(char *str, char id)
 {
 	char	rtn[6][4];
-	int		i;
-	int		j;
-	int		x;
+	int		v[3];
 	t_tetri tt;
 
-	i = -1;
-	x = 0;
+	v[0] = -1;
+	v[2] = 0;
 	tt.h = 0;
 	tt.l = 0;
-	while (++i <= 3 && (j = -1) && (rtn[4][i] = '.'))
-		while (++j <= 3 && (rtn[i][j] = str[i * 5 + j]))
-			if (rtn[4][i] != '#' && rtn[i][j] == '#' && ++tt.h)
-				rtn[4][i] = '#';
-	j = -1;
-	while (++j <= 3 && (i = -1) && (rtn[5][j] = '.'))
-		while (++i <= 3)
-			if (rtn[5][j] != '#' && rtn[i][j] == '#' && ++tt.l)
-				rtn[5][j] = '#';
+	while (++v[0] <= 3 && RESET(v[1]) && (rtn[4][v[0]] = '.'))
+		while (++v[1] <= 3 && (rtn[v[0]][v[1]] = str[v[0] * 5 + v[1]]))
+			if (rtn[4][v[0]] != '#' && rtn[v[0]][v[1]] == '#' && ++tt.h)
+				rtn[4][v[0]] = '#';
+	RESET(v[1]);
+	while (++v[1] <= 3 && RESET(v[0]) && (rtn[5][v[1]] = '.'))
+		while (++v[0] <= 3)
+			if (rtn[5][v[1]] != '#' && rtn[v[0]][v[1]] == '#' && ++tt.l)
+				rtn[5][v[1]] = '#';
 	if (!(tt.str = malloc(tt.h * tt.l)))
-		exit (-1);
-	i = -1;
-	while (++i <= 3 && (j = -1))
-		while (++j <= 3)
-			if (rtn[4][i] == '#' && rtn[5][j] == '#')
-				tt.str[x++] = rtn[i][j] == '#' ? id : '.';
-	tt.next = NULL; //PABO
-	tt.square = NULL; //PABO
+		exit(-1);
+	RESET(v[0]);
+	while (++v[0] <= 3 && (RESET(v[1])))
+		while (++v[1] <= 3)
+			if (rtn[4][v[0]] == '#' && rtn[5][v[1]] == '#')
+				tt.str[v[2]++] = rtn[v[0]][v[1]] == '#' ? id : '.';
 	return (tt);
 }
 #endif
