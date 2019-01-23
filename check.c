@@ -6,7 +6,7 @@
 /*   By: bprunevi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 13:29:02 by bprunevi          #+#    #+#             */
-/*   Updated: 2019/01/19 15:39:23 by bprunevi         ###   ########.fr       */
+/*   Updated: 2019/01/23 12:08:48 by bprunevi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 # include "fillit.h"
 
 int		four_connections(char *str)
-/* Prends chacun des 4 '#' un a un et verifie qu'ils ont une
- * connection avec au moins un autre '#'
- */
 {
 	char	*chr;
 	char	surrounding_chars[5];
@@ -42,9 +39,6 @@ int		four_connections(char *str)
 }
 
 int		is_valid(char *str)
-/*  Verifie si le tetromino envoye contient :
- *  4 '#', 4 lignes de 4 caracteres, uniquement des '#' et des '.'
- */
 {
 	int a;
 	int b;
@@ -58,11 +52,7 @@ int		is_valid(char *str)
 	return (str[a] == '\n' && b == 4 && a == 20 && four_connections(str));
 }
 
-t_tetri	format_tetri(char *str, char id)
-/* TROP LONG POUR LA NORME ! (mais ca se change)
- * Prend un tetromino VALIDE et rend une structure tetromio correspondante.
- * 'id' est la lettre correspondant au tetri (par exemple 'A')
- */
+t_tetri	format_tetri(char *str, char id) //
 {
 	char	rtn[6][4];
 	int		i;
