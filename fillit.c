@@ -6,7 +6,7 @@
 /*   By: bprunevi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 12:27:44 by bprunevi          #+#    #+#             */
-/*   Updated: 2019/01/23 16:38:13 by bprunevi         ###   ########.fr       */
+/*   Updated: 2019/01/24 11:27:44 by bprunevi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,15 @@ t_tetri	*list_tetri(int fd, char a)
 	t_tetri	*tt;
 
 	rt = read(fd, tetromino, 21);
-	if (!rt)
-		return (NULL);
-	if (tetromino[20] == '\n' || rt == 20)
-		tetromino[20] = '\0';
-	if (!is_valid(tetromino))
-	{
-		write(1, "error\n", 6);
+	tetromino[20] = rt == 20 ? '\n' : tetromino[20];
+	if (!is_valid(tetromino) && write(1, "error\n", 6))
 		exit(0);
-	}
 	if (!(tt = (t_tetri *)malloc(sizeof(t_tetri))))
 		exit(-1);
 	*tt = format_tetri(tetromino, a);
 	if (!(tt->square = ft_strnew(2 * 2)))
 		exit(-1);
-	tt->next = list_tetri(fd, a + 1);
+	tt->next = rt == 20 ? NULL : list_tetri(fd, a + 1);
 	return (tt);
 }
 

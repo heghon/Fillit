@@ -6,7 +6,7 @@
 /*   By: bprunevi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 13:29:02 by bprunevi          #+#    #+#             */
-/*   Updated: 2019/01/23 16:18:10 by bprunevi         ###   ########.fr       */
+/*   Updated: 2019/01/24 11:27:35 by bprunevi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		is_valid(char *str)
 			while (a % 5 < 4 && (str[a] == '#' || str[a] == '.'))
 				if (str[a++] == '#')
 					b++;
-	return (!str[a] && b == 4 && a == 20 && four_connections(str));
+	return (str[a] == '\n' && b == 4 && a == 20 && four_connections(str));
 }
 
 t_tetri	format_tetri(char *str, char id)
